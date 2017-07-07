@@ -42,22 +42,12 @@ namespace :rspec_report do
   end
 end
 require "rubocop/rake_task"
-# RuboCop::RakeTask.new(:rubocop_debug) do |t|
-# t.options = ['-d']
-# end
-# require "rubocop"
-
-# desc 'Run Rubocop'
-# task :Rubocop do
-# require "rubocop"
-#   sh "rubocop"
-# end
 
 desc "Execute rubocop -DR"
 RuboCop::RakeTask.new(:rubocop) do |tsk|
   tsk.options = ["-DR"] # Rails, display cop name
   tsk.fail_on_error = false
-  tsk.patterns = FileList['/root/RORCIaditi/simplecov/*']
+  tsk.patterns = FileList['/root/RORCIaditi/simplecov/spec/*.rb']
  # tsk.formatters = ["html"]
   tsk.options = ["--out", "rubocop-report.html"]
 #  tsk.RUBOCOP_OPTS = "--format html -o rubocop.html"
